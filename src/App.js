@@ -1,8 +1,7 @@
 import React from "react";
-import Child from "./Child";
 
 import { useDispatch, useSelector } from "react-redux";
-import { increment, decrement } from "./redux/counterActions";
+import { counterSlice } from "./redux/counter";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -10,14 +9,18 @@ const App = () => {
   return (
     <div>
       <p>Parent Component</p>
-      <button onClick={() => dispatch(decrement())}>-</button>
+      <button onClick={() => dispatch(counterSlice.actions.decrement())}>
+        -
+      </button>
       {counter}
-      <button onClick={() => dispatch(increment())}>+</button>
+      <button onClick={() => dispatch(counterSlice.actions.increment())}>
+        +
+      </button>
 
       <br />
-
+      {/* 
       <p>Child Component</p>
-      <Child count={counter} />
+      <Child count={counter} /> */}
     </div>
   );
 };
